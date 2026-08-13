@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Certifications & Continuous Learning — CareerAI{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 2.5rem 1.5rem 4rem 1.5rem;">
+  
+  <div class="section-header fade-in-up">
+    <span class="badge badge-cyan section-tag">Verified Credentials</span>
+    <h1 class="section-title">Certifications & Learning Hub</h1>
+    <p class="section-subtitle">Verified technical certifications and courses completed by Annareddy Naveen Kumar Reddy are accessible through LinkedIn and customizable credentials management.</p>
+  </div>
+
+  <!-- Primary LinkedIn Verification Card -->
+  <div class="glass-card fade-in-up" style="padding: 2.5rem; max-width: 800px; margin: 0 auto 3rem auto; text-align: center; border: 1px solid var(--border-focus); background: var(--gradient-dark-surface);">
+    <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--accent-cyan); margin: 0 auto 1.25rem auto;">
+      <i class="fab fa-linkedin"></i>
+    </div>
+
+    <h2 style="font-size: 1.65rem; margin-bottom: 0.75rem;">Verified LinkedIn Credentials</h2>
+    <p style="font-size: 1rem; color: var(--text-secondary); max-width: 580px; margin: 0 auto 1.75rem auto;">
+      All verified course completions, technical badges, and institutional certifications achieved by Annareddy Naveen Kumar Reddy are linked directly to his official LinkedIn profile.
+    </p>
+
+    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      <a href="{{ dev_linkedin }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg" id="view-linkedin-certs-btn">
+        <i class="fab fa-linkedin"></i> View Certifications on LinkedIn
+      </a>
+      <button class="btn btn-secondary btn-lg" onclick="document.getElementById('add-cert-modal').classList.add('open')">
+        <i class="fas fa-plus-circle"></i> Add Credential Entry
+      </button>
+    </div>
+  </div>
+
+  <!-- Dynamic Certifications Grid from Database -->
+  <div class="fade-in-up">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <h3 style="font-size: 1.25rem;"><i class="fas fa-certificate" style="color: var(--accent-emerald);"></i> Active Credential Records</h3>
+      <span class="badge badge-emerald">Verified Ledger</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;" id="certifications-list-grid">
+      {% if certifications %}
+        {% for cert in certifications %}
+        <div class="glass-card hover-lift">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+            <span class="badge badge-cyan"><i class="fas fa-check-circle"></i> Verified</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">{{ cert.issue_date or 'Recent' }}</span>
+          </div>
+          <h4 style="font-size: 1.15rem; margin-bottom: 0.35rem;">{{ cert.title }}</h4>
+          <p style="font-size: 0.88rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 1rem;">
+            {{ cert.issuer or 'Technical Organization' }}
+          </p>
+          <a href="{{ cert.credential_url or dev_linkedin }}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="width: 100%;">
+            <i class="fas fa-external-link-alt"></i> Verify Credential
+          </a>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="glass-card" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+          <i class="fas fa-award" style="font-size: 2rem; color: var(--text-muted); margin-bottom: 0.75rem;"></i>
+          <p style="color: var(--text-secondary); margin-bottom: 1rem;">Certificates are synced via LinkedIn. Click below to view all verified credentials on LinkedIn or add custom entries.</p>
+          <a href="{{ dev_linkedin }}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+            <i class="fab fa-linkedin"></i> Open LinkedIn Certifications
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal: Add Certificate -->
+<div class="modal-backdrop" id="add-cert-modal">
+  <div class="modal-content">
+    <button class="modal-close-btn" onclick="document.getElementById('add-cert-modal').classList.remove('open')">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <h3 style="margin-bottom: 1rem;"><i class="fas fa-plus-circle" style="color: var(--accent-cyan);"></i> Add Certificate Entry</h3>
+    
+    <div class="form-group">
+      <label class="form-label" for="new-cert-title">Certificate Title:</label>
+      <input type="text" class="form-control" id="new-cert-title" placeholder="e.g. Python for Data Science & AI">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="new-cert-issuer">Issuing Organization / Platform:</label>
+      <input type="text" class="form-control" id="new-cert-issuer" placeholder="e.g. Coursera / LinkedIn / University">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="new-cert-date">Issue Date:</label>
+      <input type="text" class="form-control" id="new-cert-date" placeholder="e.g. May 2025">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="new-cert-url">Credential URL (optional):</label>
+      <input type="text" class="form-control" id="new-cert-url" value="{{ dev_linkedin }}">
+    </div>
+
+    <div style="text-align: right; margin-top: 1.5rem;">
+      <button class="btn btn-primary" id="save-cert-btn">
+        <i class="fas fa-save"></i> Save Certificate
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+{% endblock %}

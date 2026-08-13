@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block title %}Resume ATS Analyzer & Optimizer — CareerAI{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 2.5rem 1.5rem 4rem 1.5rem;">
+  
+  <div class="section-header fade-in-up">
+    <span class="badge badge-emerald section-tag">ATS Heuristic & AI Engine</span>
+    <h1 class="section-title">Resume Analyzer & ATS Optimizer</h1>
+    <p class="section-subtitle">Audit your resume for Applicant Tracking System (ATS) compatibility, keyword density, section architecture, and placement readiness.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: flex-start;">
+    
+    <!-- Left Column: Upload Controls -->
+    <div class="fade-in-up">
+      <div class="glass-card" style="padding: 2rem;">
+        
+        <!-- Target Role Selector -->
+        <div class="form-group">
+          <label class="form-label" for="target-role-select"><i class="fas fa-bullseye" style="color: var(--accent-cyan);"></i> Target Job Role For Analysis:</label>
+          <select class="form-select" id="target-role-select">
+            {% for role in roles_list %}
+            <option value="{{ role }}">{{ role }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Drag & Drop Zone -->
+        <div class="upload-dropzone" id="resume-dropzone">
+          <div class="upload-icon-circle">
+            <i class="fas fa-cloud-upload-alt"></i>
+          </div>
+          <div>
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">Drag & Drop your PDF Resume here</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Supports PDF files up to 10MB</p>
+          </div>
+          <input type="file" id="resume-file-input" accept=".pdf" style="display: none;">
+          <button type="button" class="btn btn-primary btn-sm">
+            <i class="fas fa-folder-open"></i> Browse File
+          </button>
+        </div>
+
+        <div id="upload-status" style="display: none; margin-top: 1rem; text-align: center; font-size: 0.9rem; color: var(--accent-cyan);"></div>
+
+        <div style="display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0;">
+          <div style="flex: 1; height: 1px; background: var(--border-subtle);"></div>
+          <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">OR PASTE TEXT</span>
+          <div style="flex: 1; height: 1px; background: var(--border-subtle);"></div>
+        </div>
+
+        <!-- Text Paste Option -->
+        <div class="form-group">
+          <textarea class="form-control" id="resume-text-input" rows="4" placeholder="Paste your raw resume text here for instant heuristic analysis..."></textarea>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button class="btn btn-secondary btn-sm" id="analyze-text-btn" style="flex: 1;">
+            <i class="fas fa-magic"></i> Analyze Pasted Content
+          </button>
+          <button class="btn btn-outline btn-sm" id="run-demo-scan-btn">
+            <i class="fas fa-flask"></i> Try Sample Analysis
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right Column: Live Analysis Report Container (Visible upon scan) -->
+    <div class="fade-in-up">
+      <div id="resume-analysis-results" class="glass-card" style="padding: 2rem; border: 1px solid var(--border-focus); display: none;">
+        
+        <!-- Score Overview -->
+        <div class="resume-score-overview" style="margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-subtle);">
+          <div class="ats-gauge-box">
+            <div class="gauge-circle">
+              <span class="gauge-score" id="ats-score-display">--</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Score / 100</span>
+            </div>
+            <span class="badge badge-emerald"><i class="fas fa-shield-alt"></i> ATS Compatible</span>
+          </div>
+
+          <div>
+            <h3 style="font-size: 1.35rem; margin-bottom: 1rem;">ATS Compatibility Breakdown</h3>
+            
+            <div style="margin-bottom: 1rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">
+                <span>Role Keyword Alignment</span>
+                <span id="keyword-match-display" style="color: var(--accent-cyan);">--%</span>
+              </div>
+              <div class="progress-wrapper"><div class="progress-fill" id="keyword-match-bar" style="width: 0%;"></div></div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">
+                <span>Structure & Formatting Quality</span>
+                <span id="format-score-display" style="color: var(--accent-emerald);">--%</span>
+              </div>
+              <div class="progress-wrapper"><div class="progress-fill progress-fill-emerald" id="format-score-bar" style="width: 0%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detected Technical Skills -->
+        <div style="margin-bottom: 1.5rem;">
+          <h4 style="font-size: 0.95rem; text-transform: uppercase; color: var(--accent-cyan);"><i class="fas fa-code"></i> Technical Skills Detected:</h4>
+          <div class="skills-pill-cloud" id="detected-tech-skills"></div>
+        </div>
+
+        <!-- Detected Soft Skills -->
+        <div style="margin-bottom: 1.5rem;">
+          <h4 style="font-size: 0.95rem; text-transform: uppercase; color: var(--accent-emerald);"><i class="fas fa-user-check"></i> Soft Skills & Competencies:</h4>
+          <div class="skills-pill-cloud" id="detected-soft-skills"></div>
+        </div>
+
+        <!-- Missing Keywords Matrix -->
+        <div style="margin-bottom: 1.5rem;">
+          <h4 style="font-size: 0.95rem; text-transform: uppercase; color: var(--accent-rose);"><i class="fas fa-exclamation-triangle"></i> Missing High-Impact Keywords for Role:</h4>
+          <div class="skills-pill-cloud" id="missing-keywords"></div>
+        </div>
+
+        <!-- Sections Detected Checklist -->
+        <div style="margin-bottom: 1.5rem;">
+          <h4 style="font-size: 0.95rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.5rem;"><i class="fas fa-list-check"></i> Standard Section Verification:</h4>
+          <div class="checklist-grid">
+            <div class="checklist-item detected" id="chk-education">
+              <i class="fas fa-check-circle"></i> Education
+            </div>
+            <div class="checklist-item detected" id="chk-skills">
+              <i class="fas fa-check-circle"></i> Technical Skills
+            </div>
+            <div class="checklist-item detected" id="chk-projects">
+              <i class="fas fa-check-circle"></i> Key Projects
+            </div>
+            <div class="checklist-item detected" id="chk-experience">
+              <i class="fas fa-check-circle"></i> Experience / Internships
+            </div>
+            <div class="checklist-item detected" id="chk-certifications">
+              <i class="fas fa-check-circle"></i> Certifications
+            </div>
+          </div>
+        </div>
+
+        <!-- Actionable Recommendations -->
+        <div>
+          <h4 style="font-size: 0.95rem; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 0.75rem;"><i class="fas fa-lightbulb"></i> Optimization Recommendations:</h4>
+          <ul id="resume-recommendations" style="list-style: none; font-size: 0.9rem; color: var(--text-primary);"></ul>
+        </div>
+
+      </div>
+
+      <!-- Placeholder before scan -->
+      <div id="resume-analysis-placeholder" class="glass-card" style="padding: 3rem 2rem; text-align: center;">
+        <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(56, 189, 248, 0.1); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--accent-cyan); margin: 0 auto 1rem auto;">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Your Resume ATS Audit Appears Here</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 360px; margin: 0 auto 1.5rem auto;">
+          Upload your PDF resume or click "Try Sample Analysis" to inspect ATS compliance, keyword matching, and section hygiene.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/resume.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}About Me — Annareddy Naveen Kumar Reddy | CareerAI{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 2.5rem 1.5rem 4rem 1.5rem;">
+  
+  <div class="section-header fade-in-up">
+    <span class="badge badge-cyan section-tag">Developer Profile</span>
+    <h1 class="section-title">About Annareddy Naveen Kumar Reddy</h1>
+    <p class="section-subtitle">Electronics and Communication Engineering student passionate about full-stack software development, AI, IoT, and building impactful digital platforms.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 2.5rem; align-items: flex-start;">
+    
+    <!-- Left Column: Verified Profile Card -->
+    <div class="fade-in-up">
+      <div class="glass-card" style="padding: 2.25rem; text-align: center; border: 1px solid var(--border-focus);">
+        
+        <!-- Profile Photo with Glowing Frame -->
+        <div style="position: relative; width: 130px; height: 130px; margin: 0 auto 1.25rem auto;">
+          <img src="{{ url_for('static', filename='images/naveen_profile.jpg') }}" alt="{{ dev_name }}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: top center; border: 3px solid var(--accent-cyan); box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);">
+          <span style="position: absolute; bottom: 4px; right: 4px; width: 18px; height: 18px; border-radius: 50%; background: var(--accent-emerald); border: 2.5px solid var(--bg-primary);" title="Active Developer Profile"></span>
+        </div>
+
+        <h3 style="font-size: 1.4rem; margin-bottom: 0.35rem;">{{ dev_name }}</h3>
+        <p style="font-size: 0.88rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 0.75rem;">
+          3rd Year B.Tech ECE Student
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 0.6rem; text-align: left; padding: 1.25rem 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); margin-bottom: 1.5rem; font-size: 0.88rem;">
+          <div><strong style="color: var(--text-primary);"><i class="fas fa-id-badge" style="color: var(--accent-cyan); width: 20px;"></i> Student ID:</strong> <span style="font-family: var(--font-mono); color: var(--text-secondary);">{{ dev_student_id }}</span></div>
+          <div><strong style="color: var(--text-primary);"><i class="fas fa-university" style="color: var(--accent-emerald); width: 20px;"></i> University:</strong> <span style="color: var(--text-secondary);">{{ dev_university }}</span></div>
+          <div><strong style="color: var(--text-primary);"><i class="fas fa-microchip" style="color: var(--accent-indigo); width: 20px;"></i> Branch:</strong> <span style="color: var(--text-secondary);">{{ dev_branch }}</span></div>
+          <div><strong style="color: var(--text-primary);"><i class="fas fa-map-marker-alt" style="color: var(--accent-rose); width: 20px;"></i> Location:</strong> <span style="color: var(--text-secondary);">{{ dev_location }}</span></div>
+        </div>
+
+        <!-- Social & Portfolio Links -->
+        <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+          <a href="{{ dev_github }}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="width: 100%;">
+            <i class="fab fa-github"></i> GitHub Profile
+          </a>
+          <a href="{{ dev_linkedin }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="width: 100%;">
+            <i class="fab fa-linkedin"></i> LinkedIn Profile
+          </a>
+          <a href="{{ dev_portfolio }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm" style="width: 100%;">
+            <i class="fas fa-globe"></i> Existing Portfolio
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right Column: Biography, Education, Technical Vision -->
+    <div class="fade-in-up">
+      
+      <!-- Biography Card -->
+      <div class="glass-card" style="padding: 2.25rem; margin-bottom: 2rem;">
+        <h3 style="font-size: 1.35rem; margin-bottom: 1rem;"><i class="fas fa-user-circle" style="color: var(--accent-cyan);"></i> Engineering Background</h3>
+        
+        <p style="font-size: 0.98rem; line-height: 1.7; margin-bottom: 1rem;">
+          Annareddy Naveen Kumar Reddy is a 3rd-year Electronics and Communication Engineering student at Mohan Babu University. Driven by deep curiosity for both software architectures and hardware systems, he focuses on practical technology projects spanning software development, artificial intelligence, web technologies, and IoT embedded systems.
+        </p>
+
+        <p style="font-size: 0.98rem; line-height: 1.7; margin-bottom: 1.25rem;">
+          His work emphasizes bridging theoretical engineering principles with real-world software products. From architecting AI-assisted digital twins for laboratory monitoring (SmartLabTwinAI) to engineering computer vision facial recognition pipelines with cloud synchronization (AI Smart Attendance System), he combines analytical problem solving with clean code practices.
+        </p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          <span class="skill-pill tech">Software Development</span>
+          <span class="skill-pill tech">Artificial Intelligence</span>
+          <span class="skill-pill tech">Python & Flask</span>
+          <span class="skill-pill tech">JavaScript & Web Tech</span>
+          <span class="skill-pill tech">IoT & ESP32</span>
+          <span class="skill-pill tech">Data & Analytics</span>
+          <span class="skill-pill tech">Problem Solving</span>
+        </div>
+      </div>
+
+      <!-- Education Timeline Card -->
+      <div class="glass-card" style="padding: 2.25rem;">
+        <h3 style="font-size: 1.35rem; margin-bottom: 1.25rem;"><i class="fas fa-graduation-cap" style="color: var(--accent-emerald);"></i> Education</h3>
+        
+        <div style="border-left: 2px solid var(--accent-cyan); padding-left: 1.5rem; position: relative;">
+          
+          <div style="position: absolute; left: -9px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);"></div>
+          
+          <div style="margin-bottom: 0.35rem;">
+            <span class="badge badge-cyan">Current Degree Program</span>
+          </div>
+          <h4 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Bachelor of Technology (B.Tech) — ECE</h4>
+          <div style="font-size: 0.95rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 0.5rem;">
+            Mohan Babu University
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+            Specialization: Electronics and Communication Engineering (3rd Year).
+          </p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            Coursework includes Embedded Systems, Microcontrollers, Signal Processing, Analog & Digital Circuit Design, Data Structures, and Applied Software Programming.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}

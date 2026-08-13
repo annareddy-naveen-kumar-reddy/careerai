@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+
+{% block title %}Projects Showcase — CareerAI | Annareddy Naveen Kumar Reddy{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 2.5rem 1.5rem 4rem 1.5rem;">
+  
+  <div class="section-header fade-in-up">
+    <span class="badge badge-emerald section-tag">Applied Engineering Portfolio</span>
+    <h1 class="section-title">Verified Projects Showcase</h1>
+    <p class="section-subtitle">Real, production-grade applications engineered by Annareddy Naveen Kumar Reddy bridging IoT telemetry, AI anomaly detection, computer vision, and cloud data pipelines.</p>
+  </div>
+
+  <!-- ==========================================
+       PROJECT 1: SMARTLABTWINAI (FEATURED FLAGSHIP PROJECT)
+       ========================================== -->
+  <div id="smartlabtwinai" class="glass-card fade-in-up" style="padding: 2.5rem; margin-bottom: 3.5rem; border: 2px solid var(--accent-cyan); box-shadow: 0 0 35px rgba(56, 189, 248, 0.22); position: relative;">
+    
+    <div style="position: absolute; top: -14px; right: 25px;">
+      <span class="badge badge-cyan" style="background: var(--gradient-accent); color: #fff; font-size: 0.8rem; padding: 0.4rem 1.1rem; box-shadow: var(--shadow-glow); font-weight: 800; letter-spacing: 0.05em;">
+        <i class="fas fa-star"></i> FEATURED FLAGSHIP PROJECT
+      </span>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; margin-top: 0.5rem;">
+      <div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+          <span class="badge badge-cyan"><i class="fas fa-microchip"></i> ESP32 & IoT</span>
+          <span class="badge badge-indigo"><i class="fas fa-brain"></i> Machine Learning</span>
+          <span class="badge badge-emerald"><i class="fas fa-bolt"></i> Energy Management</span>
+          <span class="badge badge-amber"><i class="fas fa-crown"></i> Primary Showcase</span>
+        </div>
+        <h2 style="font-size: 2.1rem; margin-bottom: 0.4rem; color: var(--text-primary);">SmartLabTwinAI</h2>
+        <p style="font-size: 1.1rem; color: var(--accent-cyan); font-weight: 600; line-height: 1.4;">
+          An AI-Powered Digital Twin for Intelligent Laboratory Monitoring, Predictive Maintenance, and Smart Energy Management
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem;">
+        <a href="{{ dev_github }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+          <i class="fab fa-github"></i> GitHub Repository
+        </a>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <p style="font-size: 1rem; line-height: 1.75; margin-bottom: 1.5rem; color: var(--text-secondary);">
+      <strong>SmartLabTwinAI</strong> represents Annareddy Naveen Kumar Reddy's flagship engineering innovation: an end-to-end cyber-physical IoT digital twin engineered for academic and industrial research laboratories. By deploying calibrated sensors interfaced with ESP32 microcontrollers, the platform continuously streams temperature, humidity, voltage, and current parameters. An embedded and cloud-based machine learning anomaly classifier detects electrical surges, forecasts component degradation, and dynamically sheds non-critical power loads for smart energy efficiency.
+    </p>
+
+    <!-- Key Architecture & Features Grid -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+      
+      <div>
+        <h4 style="font-size: 1.05rem; margin-bottom: 0.85rem; color: var(--text-primary);"><i class="fas fa-cogs" style="color: var(--accent-cyan);"></i> Core Engineering Capabilities:</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.92rem;">
+          <li><i class="fas fa-check-circle" style="color: var(--accent-emerald); margin-right: 0.5rem;"></i> <strong>ESP32 Microcontroller Interfacing:</strong> Real-time ADC sampling of ambient temperature and humidity sensors.</li>
+          <li><i class="fas fa-check-circle" style="color: var(--accent-emerald); margin-right: 0.5rem;"></i> <strong>Electrical Telemetry Acquisition:</strong> Precision voltage and current tracking for laboratory equipment testbenches.</li>
+          <li><i class="fas fa-check-circle" style="color: var(--accent-emerald); margin-right: 0.5rem;"></i> <strong>AI Anomaly Detection:</strong> Machine learning classifier detecting thermal surges and current overdraw.</li>
+          <li><i class="fas fa-check-circle" style="color: var(--accent-emerald); margin-right: 0.5rem;"></i> <strong>Digital Twin Telemetry:</strong> Live synchronized visual state mapping the laboratory in real-time.</li>
+          <li><i class="fas fa-check-circle" style="color: var(--accent-emerald); margin-right: 0.5rem;"></i> <strong>Smart Alerts & Predictive Maintenance:</strong> Automated threshold alerts preventing equipment burnout.</li>
+        </ul>
+      </div>
+
+      <!-- Interactive Digital Twin Live Telemetry Widget -->
+      <div class="glass-card" style="background: rgba(15, 23, 42, 0.95); border: 1px solid var(--border-focus); padding: 1.5rem; box-shadow: var(--shadow-glow);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h4 style="font-size: 0.92rem; text-transform: uppercase; color: var(--accent-cyan);"><i class="fas fa-broadcast-tower"></i> Live IoT Telemetry Simulator</h4>
+          <span class="badge badge-emerald" id="twin-status-badge"><i class="fas fa-check-circle"></i> Digital Twin Nominal</span>
+        </div>
+
+        <div class="telemetry-grid">
+          <div class="telemetry-node">
+            <div class="telemetry-val" id="twin-temp">24.5 °C</div>
+            <div class="telemetry-label">Temperature</div>
+          </div>
+
+          <div class="telemetry-node">
+            <div class="telemetry-val" id="twin-humidity">54 %</div>
+            <div class="telemetry-label">Humidity</div>
+          </div>
+
+          <div class="telemetry-node">
+            <div class="telemetry-val" id="twin-voltage">229.4 V</div>
+            <div class="telemetry-label">Line Voltage</div>
+          </div>
+
+          <div class="telemetry-node">
+            <div class="telemetry-val" id="twin-current">3.24 A</div>
+            <div class="telemetry-label">Current Draw</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem; text-align: center;">
+          <button type="button" class="btn btn-primary btn-sm" id="twin-stress-btn" style="width: 100%;">
+            <i class="fas fa-bolt"></i> Simulate High Load / Machine Anomaly
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tags -->
+    <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+      <span class="skill-pill tech">ESP32</span>
+      <span class="skill-pill tech">IoT</span>
+      <span class="skill-pill tech">Temperature Monitoring</span>
+      <span class="skill-pill tech">Voltage & Current Monitoring</span>
+      <span class="skill-pill tech">AI Anomaly Detection</span>
+      <span class="skill-pill tech">Digital Twin</span>
+      <span class="skill-pill tech">Predictive Maintenance</span>
+      <span class="skill-pill tech">Smart Energy Management</span>
+    </div>
+
+  </div>
+
+  <!-- ==========================================
+       PROJECT 2: AI SMART ATTENDANCE SYSTEM (IN ACTIVE DEVELOPMENT)
+       ========================================== -->
+  <div id="attendance-system" class="glass-card fade-in-up" style="padding: 2.5rem; border-top: 5px solid #f59e0b; position: relative; margin-bottom: 2rem;">
+    
+    <div style="position: absolute; top: -14px; right: 25px;">
+      <span class="badge badge-amber" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-amber); border: 1.5px solid var(--accent-amber); font-size: 0.8rem; padding: 0.4rem 1.1rem; font-weight: 800; letter-spacing: 0.04em;">
+        <i class="fas fa-tools"></i> IN ACTIVE DEVELOPMENT • COMING SOON
+      </span>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; margin-top: 0.5rem;">
+      <div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+          <span class="badge badge-amber"><i class="fas fa-clock"></i> In Progress (త్వరలో పూర్తి అవుతుంది)</span>
+          <span class="badge badge-emerald"><i class="fas fa-camera"></i> Computer Vision</span>
+          <span class="badge badge-cyan"><i class="fab fa-python"></i> Python & Flask</span>
+        </div>
+        <h2 style="font-size: 1.85rem; margin-bottom: 0.4rem;">AI Smart Attendance System</h2>
+        <p style="font-size: 1.05rem; color: var(--accent-amber); font-weight: 600;">
+          Computer Vision-Based Automated Attendance Logging with Cloud Synchronization
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem;">
+        <a href="{{ dev_github }}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+          <i class="fab fa-github"></i> GitHub Repository
+        </a>
+      </div>
+    </div>
+
+    <!-- Development Status Banner -->
+    <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: var(--radius-md); padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <div style="font-size: 0.92rem; font-weight: 700; color: var(--accent-amber);"><i class="fas fa-code-branch"></i> Current Milestone: Face Liveness & Anti-Spoofing Optimization</div>
+        <div style="font-size: 0.82rem; color: var(--text-secondary);">Core face recognition & Google Sheets sync pipeline completed; edge optimization underway.</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span style="font-size: 0.85rem; font-weight: 700; color: var(--accent-amber);">75% Complete</span>
+        <div class="progress-wrapper" style="width: 100px; height: 8px;"><div class="progress-fill" style="width: 75%; background: var(--accent-amber);"></div></div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <p style="font-size: 0.98rem; line-height: 1.7; margin-bottom: 1.5rem;">
+      An automated contactless attendance tracking system leveraging OpenCV and deep learning face recognition representations in Python and Flask. Designed to streamline academic and organizational attendance, the system captures real-time video feeds, runs anti-spoofing liveness checks, verifies identity against local SQLite biometric databases, and instantly pushes synced timestamped attendance logs directly to cloud Google Sheets spreadsheets. Full production release is coming soon!
+    </p>
+
+    <!-- Capabilities & Vision Simulator -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+      
+      <div>
+        <h4 style="font-size: 1.05rem; margin-bottom: 0.85rem; color: var(--text-primary);"><i class="fas fa-cogs" style="color: var(--accent-emerald);"></i> Technical Highlights:</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.92rem;">
+          <li><i class="fas fa-check-circle" style="color: var(--accent-emerald); margin-right: 0.5rem;"></i> <strong>OpenCV Computer Vision:</strong> Multi-face detection and landmark tracking with high FPS throughput.</li>
+          <li><i class="fas fa-check-circle" style="color: var(--accent-emerald); margin-right: 0.5rem;"></i> <strong>128-d Feature Embeddings:</strong> Deep metric Euclidean distance calculation for robust identification.</li>
+          <li><i class="fas fa-check-circle" style="color: var(--accent-emerald); margin-right: 0.5rem;"></i> <strong>Anti-Spoofing Heuristics:</strong> Texture analysis preventing static photograph replay bypasses.</li>
+          <li><i class="fas fa-check-circle" style="color: var(--accent-emerald); margin-right: 0.5rem;"></i> <strong>SQLite Persistence:</strong> Secure local relational database caching timestamps and user metadata.</li>
+          <li><i class="fas fa-check-circle" style="color: var(--accent-emerald); margin-right: 0.5rem;"></i> <strong>Google Sheets API Integration:</strong> Real-time asynchronous cloud synchronization for administrative review.</li>
+        </ul>
+      </div>
+
+      <!-- Vision Interactive Simulator -->
+      <div class="glass-card" style="background: rgba(15, 23, 42, 0.9); border: 1px solid var(--border-focus); padding: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h4 style="font-size: 0.92rem; text-transform: uppercase; color: var(--accent-emerald);"><i class="fas fa-video"></i> Face Recognition Live Log</h4>
+          <span class="badge badge-cyan" style="font-size: 0.7rem;">OpenCV Engine</span>
+        </div>
+
+        <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem; min-height: 120px; font-family: var(--font-mono); display: flex; flex-direction: column; gap: 0.5rem;">
+          <div id="attendance-scan-status" style="font-size: 0.8rem; color: var(--text-muted);">
+            Camera Stream Standby: Ready for biometric recognition trigger...
+          </div>
+          <div id="attendance-log-box" style="display: flex; flex-direction: column; gap: 0.35rem;"></div>
+        </div>
+
+        <div style="margin-top: 1rem; text-align: center;">
+          <button type="button" class="btn btn-emerald btn-sm" id="attendance-scan-btn">
+            <i class="fas fa-camera"></i> Simulate Face Recognition Scan
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tags -->
+    <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+      <span class="skill-pill soft">Python</span>
+      <span class="skill-pill soft">Flask</span>
+      <span class="skill-pill soft">OpenCV</span>
+      <span class="skill-pill soft">SQLite</span>
+      <span class="skill-pill soft">Face Recognition</span>
+      <span class="skill-pill soft">Google Sheets Integration</span>
+      <span class="skill-pill soft">Attendance Management</span>
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/project_demos.js') }}"></script>
+{% endblock %}

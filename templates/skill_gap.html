@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Skill Gap Analyzer — CareerAI{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 2.5rem 1.5rem 4rem 1.5rem;">
+  
+  <div class="section-header fade-in-up">
+    <span class="badge badge-amber section-tag">Competency Engineering</span>
+    <h1 class="section-title">Skill Gap Analyzer & Roadmap</h1>
+    <p class="section-subtitle">Identify critical skill deficiencies across target career trajectories and follow tailored learning pathways to reach placement mastery.</p>
+  </div>
+
+  <!-- Role Selector Card -->
+  <div class="glass-card fade-in-up" style="padding: 1.75rem 2rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 260px;">
+      <label class="form-label" for="gap-target-role"><i class="fas fa-bullseye" style="color: var(--accent-cyan);"></i> Select Target Career Path:</label>
+      <select class="form-select" id="gap-target-role">
+        {% for role in roles_list %}
+        <option value="{{ role }}">{{ role }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 1.25rem;">
+      <div style="text-align: right;">
+        <div style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-secondary); font-weight: 700;">Role Skill Alignment</div>
+        <div id="gap-readiness-val" style="font-size: 2.2rem; font-weight: 800; color: var(--accent-cyan); line-height: 1;">--%</div>
+      </div>
+      <div class="progress-wrapper" style="width: 140px; height: 10px;">
+        <div class="progress-fill" id="gap-readiness-bar" style="width: 0%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skills Breakdown Table -->
+  <div class="glass-card fade-in-up" style="padding: 2rem; margin-bottom: 2.5rem; overflow-x: auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+      <h3 style="font-size: 1.2rem;"><i class="fas fa-tasks" style="color: var(--accent-cyan);"></i> Detailed Skill Competency Analysis</h3>
+      <span class="badge badge-cyan">Dynamic Taxonomy</span>
+    </div>
+
+    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.92rem;">
+      <thead>
+        <tr style="border-bottom: 2px solid var(--border-subtle); color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">
+          <th style="padding: 0.75rem;">Required Core Skill</th>
+          <th style="padding: 0.75rem;">Industry Weight</th>
+          <th style="padding: 0.75rem;">Action Priority</th>
+          <th style="padding: 0.75rem;">Current Status</th>
+          <th style="padding: 0.75rem;">Proficiency</th>
+        </tr>
+      </thead>
+      <tbody id="skill-gap-table-body">
+        <tr>
+          <td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+            <i class="fas fa-spinner fa-spin"></i> Loading skill taxonomy...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Roadmap & Project Recommendations -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;" class="fade-in-up">
+    
+    <div class="glass-card" style="padding: 2rem; border-top: 4px solid var(--accent-cyan);">
+      <h3 style="font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-project-diagram" style="color: var(--accent-cyan);"></i> Recommended Project Milestones</h3>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.25rem;">Build these practical implementations to bridge detected skill gaps:</p>
+      <ul id="gap-recommended-projects" style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.92rem;"></ul>
+    </div>
+
+    <div class="glass-card" style="padding: 2rem; border-top: 4px solid var(--accent-emerald);">
+      <h3 style="font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-book-reader" style="color: var(--accent-emerald);"></i> Core Technical Interview Focus</h3>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.25rem;">Deepen theoretical and architectural mastery on these interview subjects:</p>
+      <ul id="gap-interview-topics" style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.92rem;"></ul>
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/role_matcher.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,324 @@
+{% extends "base.html" %}
+
+{% block title %}AI Mock Interview — CareerAI{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 2.5rem 1.5rem 4rem 1.5rem;">
+  
+  <!-- Section Title -->
+  <div class="section-header fade-in-up" style="margin-bottom: 2.5rem;">
+    <span class="badge badge-cyan section-tag">Interactive AI Simulation</span>
+    <h1 class="section-title">AI Mock Interview Room</h1>
+    <p class="section-subtitle">Simulate high-stakes technical & HR interviews with real-time feedback, speech recognition, and comprehensive readiness metrics.</p>
+  </div>
+
+  <!-- ==========================================
+       SETUP WIZARD (Visible before starting)
+       ========================================== -->
+  <div id="interview-setup-section" class="fade-in-up">
+    
+    <!-- Step 1: Select Job Role -->
+    <div class="glass-card" style="margin-bottom: 1.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+        <span class="badge badge-cyan" style="font-size: 0.8rem;">Step 1</span>
+        <h3 style="font-size: 1.2rem;">Select Target Job Role</h3>
+      </div>
+      <p style="font-size: 0.88rem; margin-bottom: 1rem;">Choose the exact position you are preparing to interview for:</p>
+
+      <div class="interview-wizard-grid">
+        <div class="selectable-card role-card selected" data-role="Software Developer">
+          <div class="card-check"><i class="fas fa-check"></i></div>
+          <i class="fas fa-code" style="color: var(--accent-cyan); font-size: 1.25rem;"></i>
+          <h4 style="font-size: 1rem;">Software Developer</h4>
+          <p style="font-size: 0.78rem;">Data structures, algorithms, OOP, API design</p>
+        </div>
+
+        <div class="selectable-card role-card" data-role="Python Developer">
+          <div class="card-check"><i class="fas fa-check"></i></div>
+          <i class="fab fa-python" style="color: #38bdf8; font-size: 1.25rem;"></i>
+          <h4 style="font-size: 1rem;">Python Developer</h4>
+          <p style="font-size: 0.78rem;">Flask, backend services, concurrency, memory</p>
+        </div>
+
+        <div class="selectable-card role-card" data-role="Web Developer">
+          <div class="card-check"><i class="fas fa-check"></i></div>
+          <i class="fas fa-laptop-code" style="color: #6366f1; font-size: 1.25rem;"></i>
+          <h4 style="font-size: 1rem;">Web Developer</h4>
+          <p style="font-size: 0.78rem;">HTML5, CSS3, ES6+, Responsive UX, APIs</p>
+        </div>
+
+        <div class="selectable-card role-card" data-role="Data Analyst">
+          <div class="card-check"><i class="fas fa-check"></i></div>
+          <i class="fas fa-chart-bar" style="color: #f59e0b; font-size: 1.25rem;"></i>
+          <h4 style="font-size: 1rem;">Data Analyst</h4>
+          <p style="font-size: 0.78rem;">SQL window functions, Pandas, EDA, stats</p>
+        </div>
+
+        <div class="selectable-card role-card" data-role="AI/ML Beginner">
+          <div class="card-check"><i class="fas fa-check"></i></div>
+          <i class="fas fa-brain" style="color: #10b981; font-size: 1.25rem;"></i>
+          <h4 style="font-size: 1rem;">AI/ML Beginner</h4>
+          <p style="font-size: 0.78rem;">OpenCV, model metrics, supervised learning</p>
+        </div>
+
+        <div class="selectable-card role-card" data-role="ECE Engineer">
+          <div class="card-check"><i class="fas fa-check"></i></div>
+          <i class="fas fa-microchip" style="color: #06b6d4; font-size: 1.25rem;"></i>
+          <h4 style="font-size: 1rem;">ECE Engineer</h4>
+          <p style="font-size: 0.78rem;">ESP32, IoT protocols, digital twin, sensors</p>
+        </div>
+
+        <div class="selectable-card role-card" data-role="Custom Role">
+          <div class="card-check"><i class="fas fa-check"></i></div>
+          <i class="fas fa-sliders-h" style="color: var(--accent-rose); font-size: 1.25rem;"></i>
+          <h4 style="font-size: 1rem;">General Tech</h4>
+          <p style="font-size: 0.78rem;">Problem solving & software engineering</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 & 3: Difficulty & Interview Type -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+      
+      <!-- Difficulty -->
+      <div class="glass-card">
+        <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+          <span class="badge badge-indigo" style="font-size: 0.8rem;">Step 2</span>
+          <h3 style="font-size: 1.2rem;">Select Difficulty</h3>
+        </div>
+        <p style="font-size: 0.88rem; margin-bottom: 1rem;">Choose interview complexity level:</p>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <div class="selectable-card diff-card" data-diff="Beginner">
+            <div class="card-check"><i class="fas fa-check"></i></div>
+            <h4 style="font-size: 0.95rem;">Beginner (Foundations & Core Principles)</h4>
+          </div>
+          <div class="selectable-card diff-card selected" data-diff="Intermediate">
+            <div class="card-check"><i class="fas fa-check"></i></div>
+            <h4 style="font-size: 0.95rem;">Intermediate (Applied Engineering & Projects)</h4>
+          </div>
+          <div class="selectable-card diff-card" data-diff="Advanced">
+            <div class="card-check"><i class="fas fa-check"></i></div>
+            <h4 style="font-size: 0.95rem;">Advanced (System Design & Scalability)</h4>
+          </div>
+        </div>
+      </div>
+
+      <!-- Type -->
+      <div class="glass-card">
+        <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+          <span class="badge badge-emerald" style="font-size: 0.8rem;">Step 3</span>
+          <h3 style="font-size: 1.2rem;">Select Round Type</h3>
+        </div>
+        <p style="font-size: 0.88rem; margin-bottom: 1rem;">Choose interview focus areas:</p>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <div class="selectable-card type-card selected" data-type="Technical">
+            <div class="card-check"><i class="fas fa-check"></i></div>
+            <h4 style="font-size: 0.95rem;"><i class="fas fa-terminal" style="color: var(--accent-cyan); margin-right: 0.4rem;"></i> Technical Round (Algorithms, Code & Design)</h4>
+          </div>
+          <div class="selectable-card type-card" data-type="HR">
+            <div class="card-check"><i class="fas fa-check"></i></div>
+            <h4 style="font-size: 0.95rem;"><i class="fas fa-user-tie" style="color: var(--accent-emerald); margin-right: 0.4rem;"></i> Behavioral & HR (Communication & Fit)</h4>
+          </div>
+          <div class="selectable-card type-card" data-type="Mixed">
+            <div class="card-check"><i class="fas fa-check"></i></div>
+            <h4 style="font-size: 0.95rem;"><i class="fas fa-balance-scale" style="color: var(--accent-indigo); margin-right: 0.4rem;"></i> Mixed Comprehensive (Tech + Behavioral)</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Start Button Container -->
+    <div style="text-align: center;">
+      <button class="btn btn-primary btn-lg" id="start-interview-btn" style="min-width: 260px;">
+        <i class="fas fa-play"></i> Start AI Interview Session
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ==========================================
+       LIVE INTERVIEW CHAMBER (Initially Hidden)
+       ========================================== -->
+  <div id="interview-chamber-section" style="display: none;" class="fade-in-up">
+    
+    <div class="glass-card" style="padding: 2.25rem; border: 1px solid var(--border-focus);">
+      
+      <!-- Top Meta Bar with Timer -->
+      <div class="interview-header-bar">
+        <div>
+          <span class="badge badge-cyan" id="current-q-num">Question 1 of 5</span>
+          <span class="badge badge-demo" style="margin-left: 0.4rem;">AI Evaluator Active</span>
+        </div>
+
+        <!-- Timer Box -->
+        <div class="timer-box" id="timer-box">
+          <i class="fas fa-clock"></i>
+          <span id="timer-val">02:00</span>
+        </div>
+      </div>
+
+      <!-- Question Text Box -->
+      <div class="question-box">
+        <div class="question-meta">
+          <span><i class="fas fa-comment-dots"></i> Question Prompt</span>
+          <span>120s limit</span>
+        </div>
+        <div class="question-text" id="current-question-text">
+          Loading question prompt...
+        </div>
+      </div>
+
+      <!-- Answer Input & Controls -->
+      <div class="form-group" style="margin-bottom: 1.25rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <label class="form-label" style="margin-bottom: 0;"><i class="fas fa-pen"></i> Your Spoken / Written Response:</label>
+          
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <!-- Speech Recognition Toggle Button -->
+            <button type="button" class="mic-record-btn" id="mic-toggle-btn" title="Toggle Speech-to-Text Recording">
+              <i class="fas fa-microphone"></i>
+              <span id="mic-btn-text">Voice Answer</span>
+              <div class="sound-wave">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </button>
+            
+            <span id="answer-word-count" style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">0 words</span>
+          </div>
+        </div>
+
+        <textarea class="form-control" id="user-answer-input" rows="6" placeholder="Type your structured answer here or click 'Voice Answer' to speak using browser speech recognition..."></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+        <button class="btn btn-primary btn-lg" id="submit-answer-btn" onclick="submitAnswer()">
+          <i class="fas fa-paper-plane"></i> Submit Answer for AI Evaluation
+        </button>
+      </div>
+
+      <!-- ==========================================
+           DYNAMIC AI EVALUATION CARD
+           ========================================== -->
+      <div id="eval-result-container" class="eval-card" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--border-subtle);">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-award" style="color: var(--accent-cyan); font-size: 1.3rem;"></i>
+            <h3 style="font-size: 1.2rem;">AI Evaluation & Detailed Feedback</h3>
+          </div>
+          <span class="badge badge-emerald"><i class="fas fa-check"></i> Analysis Complete</span>
+        </div>
+
+        <!-- Scores Grid -->
+        <div class="eval-scores-grid">
+          <div class="eval-score-item">
+            <div class="eval-score-num" id="eval-overall-score">--</div>
+            <div class="eval-score-label">Overall Score</div>
+          </div>
+          <div class="eval-score-item">
+            <div class="eval-score-num" id="eval-tech-score" style="color: var(--accent-emerald);">--</div>
+            <div class="eval-score-label">Technical Depth</div>
+          </div>
+          <div class="eval-score-item">
+            <div class="eval-score-num" id="eval-comm-score" style="color: var(--accent-indigo);">--</div>
+            <div class="eval-score-label">Communication</div>
+          </div>
+          <div class="eval-score-item">
+            <div class="eval-score-num" id="eval-conf-score" style="color: var(--accent-amber);">--</div>
+            <div class="eval-score-label">Confidence</div>
+          </div>
+          <div class="eval-score-item">
+            <div class="eval-score-num" id="eval-relev-score" style="color: var(--accent-rose);">--</div>
+            <div class="eval-score-label">Relevance</div>
+          </div>
+        </div>
+
+        <!-- Feedback Sections -->
+        <div class="feedback-section">
+          <div class="feedback-box feedback-well">
+            <strong style="color: var(--accent-emerald);"><i class="fas fa-check-circle"></i> What You Did Well:</strong>
+            <p id="eval-feedback-well" style="color: var(--text-primary); margin-top: 0.35rem;"></p>
+          </div>
+
+          <div class="feedback-box feedback-missed">
+            <strong style="color: var(--accent-amber);"><i class="fas fa-exclamation-triangle"></i> What You Missed:</strong>
+            <p id="eval-feedback-missed" style="color: var(--text-primary); margin-top: 0.35rem;"></p>
+          </div>
+
+          <div class="feedback-box feedback-improve">
+            <strong style="color: var(--accent-cyan);"><i class="fas fa-lightbulb"></i> How To Improve:</strong>
+            <p id="eval-feedback-improve" style="color: var(--text-primary); margin-top: 0.35rem;"></p>
+          </div>
+
+          <div class="better-example-box">
+            <h5><i class="fas fa-star"></i> Exemplary Model Answer:</h5>
+            <p id="eval-better-example" style="font-size: 0.92rem; color: var(--text-primary); font-style: italic;"></p>
+          </div>
+        </div>
+
+        <!-- Next Question Button -->
+        <div style="margin-top: 1.5rem; text-align: right;">
+          <button class="btn btn-primary btn-lg" id="next-question-btn">
+            <i class="fas fa-arrow-right"></i> Next Question
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FINAL INTERVIEW SCORECARD (Initially Hidden)
+       ========================================== -->
+  <div id="interview-scorecard-section" style="display: none;" class="fade-in-up">
+    <div class="glass-card" style="padding: 2.5rem; max-width: 860px; margin: 0 auto; border: 1px solid var(--border-focus);">
+      
+      <div class="scorecard-hero">
+        <div class="big-score-ring">
+          <div class="big-score-number" id="final-overall-score">88</div>
+          <div class="big-score-unit">/ 100</div>
+        </div>
+        <h2 style="font-size: 1.85rem; margin-bottom: 0.5rem;">Interview Performance Report</h2>
+        <span class="badge badge-emerald" id="final-readiness-badge" style="font-size: 0.85rem; padding: 0.4rem 1rem;">Placement Ready</span>
+        <p id="final-summary-text" style="max-width: 650px; margin: 1.25rem auto 0 auto; font-size: 0.98rem;"></p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0;">
+        <div class="glass-card" style="padding: 1.25rem; background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.25);">
+          <h4 style="color: var(--accent-emerald); font-size: 1rem; margin-bottom: 0.75rem;"><i class="fas fa-thumbs-up"></i> Key Strengths</h4>
+          <ul id="final-strengths-list" style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.88rem;"></ul>
+        </div>
+
+        <div class="glass-card" style="padding: 1.25rem; background: rgba(245, 158, 11, 0.05); border-color: rgba(245, 158, 11, 0.25);">
+          <h4 style="color: var(--accent-amber); font-size: 1rem; margin-bottom: 0.75rem;"><i class="fas fa-tools"></i> Growth Opportunities</h4>
+          <ul id="final-weaknesses-list" style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.88rem;"></ul>
+        </div>
+      </div>
+
+      <!-- Recommended Topics -->
+      <div style="margin-bottom: 2rem;">
+        <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; text-transform: uppercase; color: var(--text-secondary);"><i class="fas fa-graduation-cap"></i> Recommended Focus Topics</h4>
+        <div id="final-topics-cloud" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
+      </div>
+
+      <!-- Actions -->
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="{{ url_for('interview') }}" class="btn btn-secondary">
+          <i class="fas fa-redo"></i> Practice Another Round
+        </a>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-primary">
+          <i class="fas fa-chart-line"></i> View in Career Dashboard
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/interview.js') }}"></script>
+{% endblock %}

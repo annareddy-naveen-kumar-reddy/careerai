@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Developer — CareerAI | Annareddy Naveen Kumar Reddy</title>
+  <meta name="description" content="AI-powered career preparation platform designed for mock interviews, resume ATS analysis, skill gap tracking, and career readiness. Built by Annareddy Naveen Kumar Reddy.">
+  <meta name="author" content="Annareddy Naveen Kumar Reddy">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="static/css/main.css">
+  <link rel="stylesheet" href="static/css/components.css">
+  <link rel="stylesheet" href="static/css/interview.css">
+  <link rel="stylesheet" href="static/css/resume.css">
+  <link rel="stylesheet" href="static/css/dashboard.css">
+
+  
+</head>
+<body>
+  <!-- Ambient Particle Canvas & Top Glow -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="ambient-glow-top"></div>
+
+  <!-- Sticky Navbar -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="brand-logo" id="nav-brand-logo">
+        <div class="brand-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <span>CareerAI</span>
+        <span class="brand-badge">PRO</span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link "><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="interview.html" class="nav-link "><i class="fas fa-microphone"></i> AI Interview</a></li>
+        <li><a href="resume.html" class="nav-link "><i class="fas fa-file-invoice"></i> Resume Analyzer</a></li>
+        <li><a href="dashboard.html" class="nav-link "><i class="fas fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="skills.html" class="nav-link "><i class="fas fa-layer-group"></i> Skills</a></li>
+        <li><a href="projects.html" class="nav-link "><i class="fas fa-code-branch"></i> Projects</a></li>
+        <li><a href="about.html" class="nav-link "><i class="fas fa-user"></i> About</a></li>
+        <li><a href="contact.html" class="nav-link active"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+
+      <!-- Action Buttons & Theme Switcher -->
+      <div class="nav-actions">
+        
+        <span class="badge badge-demo" title="Running in high-fidelity Demo Mode without external API charges">
+          <i class="fas fa-flask"></i> Demo Mode
+        </span>
+        
+
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+          <i class="fas fa-sun"></i>
+        </button>
+
+        <a href="profile.html" class="btn btn-secondary btn-sm" id="nav-profile-btn" style="border-radius: var(--radius-full); padding: 0.35rem 0.85rem 0.35rem 0.45rem; display: flex; align-items: center; gap: 0.45rem;">
+          <img src="static/images/naveen_profile.jpg" alt="Annareddy Naveen Kumar Reddy" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; object-position: top center; border: 1.5px solid var(--accent-cyan);">
+          <span class="desktop-only" style="font-size: 0.85rem; font-weight: 600;">Profile</span>
+        </a>
+
+        <button class="hamburger-btn" aria-label="Open Navigation Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-drawer">
+      <a href="index.html" class="nav-link "><i class="fas fa-home"></i> Home</a>
+      <a href="interview.html" class="nav-link "><i class="fas fa-microphone"></i> AI Mock Interview</a>
+      <a href="resume.html" class="nav-link "><i class="fas fa-file-invoice"></i> Resume Analyzer</a>
+      <a href="dashboard.html" class="nav-link "><i class="fas fa-chart-line"></i> Career Dashboard</a>
+      <a href="skills.html" class="nav-link "><i class="fas fa-layer-group"></i> Skill Gap Analyzer</a>
+      <a href="role-matcher.html" class="nav-link "><i class="fas fa-briefcase"></i> Job Role Matcher</a>
+      <a href="projects.html" class="nav-link "><i class="fas fa-code-branch"></i> Projects</a>
+      <a href="certifications.html" class="nav-link "><i class="fas fa-certificate"></i> Certifications</a>
+      <a href="achievements.html" class="nav-link "><i class="fas fa-trophy"></i> Achievements</a>
+      <a href="about.html" class="nav-link "><i class="fas fa-user"></i> About Me</a>
+      <a href="contact.html" class="nav-link active"><i class="fas fa-envelope"></i> Contact</a>
+      <a href="profile.html" class="nav-link "><i class="fas fa-id-card"></i> Developer Profile</a>
+    </div>
+  </header>
+
+  <!-- Flash Messages -->
+  
+    
+  
+
+  <!-- Main Content Block -->
+  <main>
+    
+<div class="container" style="padding: 2.5rem 1.5rem 4rem 1.5rem;">
+  
+  <div class="section-header fade-in-up">
+    <span class="badge badge-cyan section-tag">Get in Touch</span>
+    <h1 class="section-title">Connect & Collaborate</h1>
+    <p class="section-subtitle">Reach out directly to Annareddy Naveen Kumar Reddy for internship opportunities, technical collaborations, or engineering discussions.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 2.5rem; align-items: flex-start;">
+    
+    <!-- Left Column: Direct Channels -->
+    <div class="fade-in-up">
+      <div class="glass-card" style="padding: 2.25rem;">
+        
+        <h3 style="font-size: 1.3rem; margin-bottom: 1.25rem;"><i class="fas fa-address-card" style="color: var(--accent-cyan);"></i> Direct Contact Channels</h3>
+
+        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+          
+          <div style="display: flex; align-items: flex-start; gap: 1rem;">
+            <div style="width: 42px; height: 42px; border-radius: var(--radius-sm); background: rgba(56, 189, 248, 0.1); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); font-size: 1.1rem; flex-shrink: 0;">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Email Address</div>
+              <a href="mailto:naveenkumarreddyannareddy@gmail.com" style="font-size: 0.95rem; font-weight: 600; word-break: break-all;">naveenkumarreddyannareddy@gmail.com</a>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: flex-start; gap: 1rem;">
+            <div style="width: 42px; height: 42px; border-radius: var(--radius-sm); background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center; color: var(--accent-emerald); font-size: 1.1rem; flex-shrink: 0;">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Direct Phone</div>
+              <a href="tel:7013998257" style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary);">+91 7013998257</a>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: flex-start; gap: 1rem;">
+            <div style="width: 42px; height: 42px; border-radius: var(--radius-sm); background: rgba(244, 63, 94, 0.1); display: flex; align-items: center; justify-content: center; color: var(--accent-rose); font-size: 1.1rem; flex-shrink: 0;">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Location</div>
+              <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.4;">
+                Kadapa District, Kamalapuram Mandal, Thurakapalli Village, Andhra Pradesh, India
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Social Links Buttons -->
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 0.6rem;">
+          <a href="https://github.com/annareddy-naveen-kumar-reddy" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="width: 100%;">
+            <i class="fab fa-github"></i> github.com/annareddy-naveen-kumar-reddy
+          </a>
+          <a href="https://www.linkedin.com/in/annareddy-naveen-kumar-reddy-037343377/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="width: 100%;">
+            <i class="fab fa-linkedin"></i> Connect on LinkedIn
+          </a>
+          <a href="https://annareddy-naveen-kumar-reddy.github.io/portfolio/" target="_blank" rel="noopener" class="btn btn-outline btn-sm" style="width: 100%;">
+            <i class="fas fa-globe"></i> View Portfolio Website
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right Column: Interactive Validated Message Form -->
+    <div class="fade-in-up">
+      <div class="glass-card" style="padding: 2.25rem;">
+        
+        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;"><i class="fas fa-paper-plane" style="color: var(--accent-emerald);"></i> Send a Direct Message</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Fill out the form below to transmit a message directly to Annareddy Naveen Kumar Reddy.</p>
+
+        <form action="/contact" method="POST">
+          
+          <div class="form-group">
+            <label class="form-label" for="contact-name"><i class="fas fa-user"></i> Your Full Name:</label>
+            <input type="text" class="form-control" id="contact-name" name="name" required placeholder="e.g. Hiring Manager / Recruiter Name">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-email"><i class="fas fa-envelope"></i> Your Email Address:</label>
+            <input type="email" class="form-control" id="contact-email" name="email" required placeholder="e.g. hiring@company.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-message"><i class="fas fa-comment-alt"></i> Message Content:</label>
+            <textarea class="form-control" id="contact-message" name="message" rows="5" required placeholder="Write your message, project query, or interview invitation here..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+            <i class="fas fa-paper-plane"></i> Transmit Message Securely
+          </button>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom: 0.75rem;">
+            <div class="brand-icon"><i class="fas fa-brain"></i></div>
+            <span>CareerAI</span>
+          </div>
+          <p>"Built with curiosity, code, and continuous learning."</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">
+            Created by <strong style="color: var(--text-primary);">Annareddy Naveen Kumar Reddy</strong><br>
+            3rd Year B.Tech ECE, Mohan Babu University
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Core Platform</h5>
+          <ul class="footer-links">
+            <li><a href="interview.html">AI Mock Interview</a></li>
+            <li><a href="resume.html">Resume ATS Analyzer</a></li>
+            <li><a href="dashboard.html">Career Dashboard</a></li>
+            <li><a href="skills.html">Skill Gap Analyzer</a></li>
+            <li><a href="role-matcher.html">Job Role Matcher</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Showcase</h5>
+          <ul class="footer-links">
+            <li><a href="projects.html">SmartLabTwinAI</a></li>
+            <li><a href="projects.html">AI Smart Attendance</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="achievements.html">Milestones</a></li>
+            <li><a href="about.html">About Developer</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Connect & Verify</h5>
+          <ul class="footer-links">
+            <li><a href="mailto:naveenkumarreddyannareddy@gmail.com"><i class="fas fa-envelope"></i> naveenkumarreddyannareddy@gmail.com</a></li>
+            <li><a href="tel:7013998257"><i class="fas fa-phone"></i> +91 7013998257</a></li>
+            <li><a href="https://github.com/annareddy-naveen-kumar-reddy" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub Profile</a></li>
+            <li><a href="https://www.linkedin.com/in/annareddy-naveen-kumar-reddy-037343377/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn Profile</a></li>
+            <li><a href="https://annareddy-naveen-kumar-reddy.github.io/portfolio/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Live Portfolio</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 CareerAI — Designed & Engineered by Annareddy Naveen Kumar Reddy | Kadapa District, Kamalapuram Mandal, Thurakapalli Village, Andhra Pradesh, India
+        </div>
+        <div class="footer-social-links">
+          <a href="https://github.com/annareddy-naveen-kumar-reddy" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/annareddy-naveen-kumar-reddy-037343377/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://annareddy-naveen-kumar-reddy.github.io/portfolio/" target="_blank" rel="noopener" aria-label="Portfolio"><i class="fas fa-globe"></i></a>
+          <a href="mailto:naveenkumarreddyannareddy@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="static/js/main.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Dashboard — CareerAI</title>
+  <meta name="description" content="AI-powered career preparation platform designed for mock interviews, resume ATS analysis, skill gap tracking, and career readiness. Built by Annareddy Naveen Kumar Reddy.">
+  <meta name="author" content="Annareddy Naveen Kumar Reddy">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="static/css/main.css">
+  <link rel="stylesheet" href="static/css/components.css">
+  <link rel="stylesheet" href="static/css/interview.css">
+  <link rel="stylesheet" href="static/css/resume.css">
+  <link rel="stylesheet" href="static/css/dashboard.css">
+
+  
+</head>
+<body>
+  <!-- Ambient Particle Canvas & Top Glow -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="ambient-glow-top"></div>
+
+  <!-- Sticky Navbar -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="brand-logo" id="nav-brand-logo">
+        <div class="brand-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <span>CareerAI</span>
+        <span class="brand-badge">PRO</span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link "><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="interview.html" class="nav-link "><i class="fas fa-microphone"></i> AI Interview</a></li>
+        <li><a href="resume.html" class="nav-link "><i class="fas fa-file-invoice"></i> Resume Analyzer</a></li>
+        <li><a href="dashboard.html" class="nav-link active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="skills.html" class="nav-link "><i class="fas fa-layer-group"></i> Skills</a></li>
+        <li><a href="projects.html" class="nav-link "><i class="fas fa-code-branch"></i> Projects</a></li>
+        <li><a href="about.html" class="nav-link "><i class="fas fa-user"></i> About</a></li>
+        <li><a href="contact.html" class="nav-link "><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+
+      <!-- Action Buttons & Theme Switcher -->
+      <div class="nav-actions">
+        
+        <span class="badge badge-demo" title="Running in high-fidelity Demo Mode without external API charges">
+          <i class="fas fa-flask"></i> Demo Mode
+        </span>
+        
+
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+          <i class="fas fa-sun"></i>
+        </button>
+
+        <a href="profile.html" class="btn btn-secondary btn-sm" id="nav-profile-btn" style="border-radius: var(--radius-full); padding: 0.35rem 0.85rem 0.35rem 0.45rem; display: flex; align-items: center; gap: 0.45rem;">
+          <img src="static/images/naveen_profile.jpg" alt="Annareddy Naveen Kumar Reddy" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; object-position: top center; border: 1.5px solid var(--accent-cyan);">
+          <span class="desktop-only" style="font-size: 0.85rem; font-weight: 600;">Profile</span>
+        </a>
+
+        <button class="hamburger-btn" aria-label="Open Navigation Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-drawer">
+      <a href="index.html" class="nav-link "><i class="fas fa-home"></i> Home</a>
+      <a href="interview.html" class="nav-link "><i class="fas fa-microphone"></i> AI Mock Interview</a>
+      <a href="resume.html" class="nav-link "><i class="fas fa-file-invoice"></i> Resume Analyzer</a>
+      <a href="dashboard.html" class="nav-link active"><i class="fas fa-chart-line"></i> Career Dashboard</a>
+      <a href="skills.html" class="nav-link "><i class="fas fa-layer-group"></i> Skill Gap Analyzer</a>
+      <a href="role-matcher.html" class="nav-link "><i class="fas fa-briefcase"></i> Job Role Matcher</a>
+      <a href="projects.html" class="nav-link "><i class="fas fa-code-branch"></i> Projects</a>
+      <a href="certifications.html" class="nav-link "><i class="fas fa-certificate"></i> Certifications</a>
+      <a href="achievements.html" class="nav-link "><i class="fas fa-trophy"></i> Achievements</a>
+      <a href="about.html" class="nav-link "><i class="fas fa-user"></i> About Me</a>
+      <a href="contact.html" class="nav-link "><i class="fas fa-envelope"></i> Contact</a>
+      <a href="profile.html" class="nav-link "><i class="fas fa-id-card"></i> Developer Profile</a>
+    </div>
+  </header>
+
+  <!-- Flash Messages -->
+  
+    
+  
+
+  <!-- Main Content Block -->
+  <main>
+    
+<div class="container" style="padding: 2.5rem 1.5rem 4rem 1.5rem;">
+  
+  <!-- Dashboard Hero Card -->
+  <div class="dashboard-hero-card fade-in-up">
+    <div style="display: flex; align-items: center; gap: 1.5rem;">
+      <div style="position: relative; flex-shrink: 0;">
+        <img src="static/images/naveen_profile.jpg" alt="Annareddy Naveen Kumar Reddy" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; object-position: top center; border: 3px solid var(--accent-cyan); box-shadow: var(--shadow-glow);">
+        <span style="position: absolute; bottom: 2px; right: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent-emerald); border: 2.5px solid var(--bg-primary);" title="Verified"></span>
+      </div>
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.35rem;">
+          <span class="badge badge-emerald"><i class="fas fa-check-circle"></i> Profile Active</span>
+          <span class="badge badge-cyan"><i class="fas fa-university"></i> Mohan Babu University</span>
+        </div>
+        <h1 style="font-size: 2.1rem; margin-bottom: 0.25rem;">Annareddy Naveen Kumar Reddy</h1>
+        <p style="font-size: 0.92rem; color: var(--text-secondary); max-width: 540px;">
+          Electronics and Communication Engineering (ECE) | 3rd Year • Candidate Target Role: <strong style="color: var(--accent-cyan);">Software Developer</strong>
+        </p>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 1.5rem;">
+      <div style="text-align: right;">
+        <div style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-secondary); font-weight: 700;">Career Placement Index</div>
+        <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent-cyan); line-height: 1;">
+          82<span style="font-size: 1.2rem; color: var(--text-muted);">%</span>
+        </div>
+      </div>
+      <div style="width: 70px; height: 70px; border-radius: 50%; border: 4px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--accent-cyan); box-shadow: var(--shadow-glow);">
+        <i class="fas fa-rocket"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Metric Cards Grid -->
+  <div class="dashboard-stats-grid fade-in-up">
+    
+    <div class="glass-card stat-card hover-lift">
+      <div class="stat-header">
+        <span class="stat-title">Avg Interview Score</span>
+        <div class="stat-icon" style="background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan);"><i class="fas fa-microphone"></i></div>
+      </div>
+      <div class="stat-value">86<span style="font-size: 1.2rem; font-weight: 500; color: var(--text-muted);">/100</span></div>
+      <div class="stat-trend"><i class="fas fa-arrow-up"></i> +14% performance growth</div>
+    </div>
+
+    <div class="glass-card stat-card hover-lift">
+      <div class="stat-header">
+        <span class="stat-title">Resume ATS Score</span>
+        <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald);"><i class="fas fa-file-invoice"></i></div>
+      </div>
+      <div class="stat-value">88<span style="font-size: 1.2rem; font-weight: 500; color: var(--text-muted);">%</span></div>
+      <div class="stat-trend" style="color: var(--accent-emerald);"><i class="fas fa-check"></i> High ATS Pass Rate</div>
+    </div>
+
+    <div class="glass-card stat-card hover-lift">
+      <div class="stat-header">
+        <span class="stat-title">Verified Skills</span>
+        <div class="stat-icon" style="background: rgba(99, 102, 241, 0.1); color: var(--accent-indigo);"><i class="fas fa-layer-group"></i></div>
+      </div>
+      <div class="stat-value">15<span style="font-size: 1.2rem; font-weight: 500; color: var(--text-muted);"> competencies</span></div>
+      <div class="stat-trend" style="color: var(--accent-indigo);"><i class="fas fa-cube"></i> Python, ECE, IoT & Web</div>
+    </div>
+
+    <div class="glass-card stat-card hover-lift">
+      <div class="stat-header">
+        <span class="stat-title">Placement Readiness</span>
+        <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--accent-amber);"><i class="fas fa-briefcase"></i></div>
+      </div>
+      <div class="stat-value">Tier 1</div>
+      <div class="stat-trend" style="color: var(--accent-cyan);"><i class="fas fa-star"></i> Placement Ready</div>
+    </div>
+
+  </div>
+
+  <!-- Interactive SVG Charts Grid -->
+  <div class="charts-grid fade-in-up">
+    
+    <!-- Chart 1: Interview Score Progression -->
+    <div class="glass-card chart-card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h3 style="font-size: 1.15rem;">Interview Score Trajectory</h3>
+          <p style="font-size: 0.82rem;">Score progression across consecutive technical & HR rounds</p>
+        </div>
+        <span class="badge badge-cyan">Interactive SVG</span>
+      </div>
+      <div class="chart-container" id="perf-line-chart"></div>
+    </div>
+
+    <!-- Chart 2: 5-Axis Radar Skill Polygon -->
+    <div class="glass-card chart-card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h3 style="font-size: 1.15rem;">Skill Competency Polygon</h3>
+          <p style="font-size: 0.82rem;">5-domain evaluation breakdown</p>
+        </div>
+        <span class="badge badge-emerald">5-Axis Radar</span>
+      </div>
+      <div class="chart-container" id="skill-radar-chart"></div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Grid: Recent Activities & Next Actions -->
+  <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem;" class="fade-in-up">
+    
+    <!-- Recent Sessions -->
+    <div class="glass-card" style="padding: 1.75rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <h3 style="font-size: 1.15rem;"><i class="fas fa-history" style="color: var(--accent-cyan);"></i> Recent Interview Sessions</h3>
+        <a href="interview.html" class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i> New Session</a>
+      </div>
+
+      <div class="activity-feed-list">
+        
+          
+          <div class="activity-feed-item">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <div class="activity-icon-badge interview">
+                <i class="fas fa-microphone"></i>
+              </div>
+              <div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">Software Developer Interview</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Intermediate • Technical • 2026-08-13</div>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <span class="badge badge-emerald" style="font-size: 0.85rem;">63/100</span>
+            </div>
+          </div>
+          
+          <div class="activity-feed-item">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <div class="activity-icon-badge interview">
+                <i class="fas fa-microphone"></i>
+              </div>
+              <div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">Software Developer Interview</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Intermediate • Technical • 2026-08-13</div>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <span class="badge badge-emerald" style="font-size: 0.85rem;">62/100</span>
+            </div>
+          </div>
+          
+          <div class="activity-feed-item">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <div class="activity-icon-badge interview">
+                <i class="fas fa-microphone"></i>
+              </div>
+              <div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">Software Developer Interview</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Intermediate • Technical • 2026-08-13</div>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <span class="badge badge-emerald" style="font-size: 0.85rem;">0/100</span>
+            </div>
+          </div>
+          
+          <div class="activity-feed-item">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <div class="activity-icon-badge interview">
+                <i class="fas fa-microphone"></i>
+              </div>
+              <div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">Software Developer Interview</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Intermediate • Technical • 2026-08-13</div>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <span class="badge badge-emerald" style="font-size: 0.85rem;">65/100</span>
+            </div>
+          </div>
+          
+          <div class="activity-feed-item">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <div class="activity-icon-badge interview">
+                <i class="fas fa-microphone"></i>
+              </div>
+              <div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">Software Developer Interview</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Intermediate • Technical • 2026-08-13</div>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <span class="badge badge-emerald" style="font-size: 0.85rem;">86/100</span>
+            </div>
+          </div>
+          
+        
+      </div>
+    </div>
+
+    <!-- Next Career Actions -->
+    <div class="glass-card" style="padding: 1.75rem;">
+      <h3 style="font-size: 1.15rem; margin-bottom: 1.25rem;"><i class="fas fa-tasks" style="color: var(--accent-emerald);"></i> Recommended Next Steps</h3>
+      
+      <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+        
+        <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.85rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">
+          <i class="fas fa-arrow-circle-right" style="color: var(--accent-cyan); margin-top: 0.2rem;"></i>
+          <div>
+            <div style="font-size: 0.88rem; font-weight: 600; color: var(--text-primary);">Practice Advanced Python Concurrency</div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin: 0;">Asyncio, multiprocessing, and Global Interpreter Lock questions.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.85rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">
+          <i class="fas fa-arrow-circle-right" style="color: var(--accent-emerald); margin-top: 0.2rem;"></i>
+          <div>
+            <div style="font-size: 0.88rem; font-weight: 600; color: var(--text-primary);">Optimize SmartLabTwinAI Architecture</div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin: 0;">Document machine learning anomaly classification heuristics.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.85rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">
+          <i class="fas fa-arrow-circle-right" style="color: var(--accent-indigo); margin-top: 0.2rem;"></i>
+          <div>
+            <div style="font-size: 0.88rem; font-weight: 600; color: var(--text-primary);">Audit Resume for Cloud Microservices</div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin: 0;">Add containerization & deployment keywords to project cards.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom: 0.75rem;">
+            <div class="brand-icon"><i class="fas fa-brain"></i></div>
+            <span>CareerAI</span>
+          </div>
+          <p>"Built with curiosity, code, and continuous learning."</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">
+            Created by <strong style="color: var(--text-primary);">Annareddy Naveen Kumar Reddy</strong><br>
+            3rd Year B.Tech ECE, Mohan Babu University
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Core Platform</h5>
+          <ul class="footer-links">
+            <li><a href="interview.html">AI Mock Interview</a></li>
+            <li><a href="resume.html">Resume ATS Analyzer</a></li>
+            <li><a href="dashboard.html">Career Dashboard</a></li>
+            <li><a href="skills.html">Skill Gap Analyzer</a></li>
+            <li><a href="role-matcher.html">Job Role Matcher</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Showcase</h5>
+          <ul class="footer-links">
+            <li><a href="projects.html">SmartLabTwinAI</a></li>
+            <li><a href="projects.html">AI Smart Attendance</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="achievements.html">Milestones</a></li>
+            <li><a href="about.html">About Developer</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Connect & Verify</h5>
+          <ul class="footer-links">
+            <li><a href="mailto:naveenkumarreddyannareddy@gmail.com"><i class="fas fa-envelope"></i> naveenkumarreddyannareddy@gmail.com</a></li>
+            <li><a href="tel:7013998257"><i class="fas fa-phone"></i> +91 7013998257</a></li>
+            <li><a href="https://github.com/annareddy-naveen-kumar-reddy" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub Profile</a></li>
+            <li><a href="https://www.linkedin.com/in/annareddy-naveen-kumar-reddy-037343377/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn Profile</a></li>
+            <li><a href="https://annareddy-naveen-kumar-reddy.github.io/portfolio/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Live Portfolio</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 CareerAI — Designed & Engineered by Annareddy Naveen Kumar Reddy | Kadapa District, Kamalapuram Mandal, Thurakapalli Village, Andhra Pradesh, India
+        </div>
+        <div class="footer-social-links">
+          <a href="https://github.com/annareddy-naveen-kumar-reddy" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/annareddy-naveen-kumar-reddy-037343377/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://annareddy-naveen-kumar-reddy.github.io/portfolio/" target="_blank" rel="noopener" aria-label="Portfolio"><i class="fas fa-globe"></i></a>
+          <a href="mailto:naveenkumarreddyannareddy@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="static/js/main.js"></script>
+  
+<script src="static/js/dashboard.js"></script>
+
+</body>
+</html>

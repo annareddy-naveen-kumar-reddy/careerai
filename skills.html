@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Gap Analyzer — CareerAI</title>
+  <meta name="description" content="AI-powered career preparation platform designed for mock interviews, resume ATS analysis, skill gap tracking, and career readiness. Built by Annareddy Naveen Kumar Reddy.">
+  <meta name="author" content="Annareddy Naveen Kumar Reddy">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="static/css/main.css">
+  <link rel="stylesheet" href="static/css/components.css">
+  <link rel="stylesheet" href="static/css/interview.css">
+  <link rel="stylesheet" href="static/css/resume.css">
+  <link rel="stylesheet" href="static/css/dashboard.css">
+
+  
+</head>
+<body>
+  <!-- Ambient Particle Canvas & Top Glow -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="ambient-glow-top"></div>
+
+  <!-- Sticky Navbar -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="brand-logo" id="nav-brand-logo">
+        <div class="brand-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <span>CareerAI</span>
+        <span class="brand-badge">PRO</span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link "><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="interview.html" class="nav-link "><i class="fas fa-microphone"></i> AI Interview</a></li>
+        <li><a href="resume.html" class="nav-link "><i class="fas fa-file-invoice"></i> Resume Analyzer</a></li>
+        <li><a href="dashboard.html" class="nav-link "><i class="fas fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="skills.html" class="nav-link active"><i class="fas fa-layer-group"></i> Skills</a></li>
+        <li><a href="projects.html" class="nav-link "><i class="fas fa-code-branch"></i> Projects</a></li>
+        <li><a href="about.html" class="nav-link "><i class="fas fa-user"></i> About</a></li>
+        <li><a href="contact.html" class="nav-link "><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+
+      <!-- Action Buttons & Theme Switcher -->
+      <div class="nav-actions">
+        
+        <span class="badge badge-demo" title="Running in high-fidelity Demo Mode without external API charges">
+          <i class="fas fa-flask"></i> Demo Mode
+        </span>
+        
+
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+          <i class="fas fa-sun"></i>
+        </button>
+
+        <a href="profile.html" class="btn btn-secondary btn-sm" id="nav-profile-btn" style="border-radius: var(--radius-full); padding: 0.35rem 0.85rem 0.35rem 0.45rem; display: flex; align-items: center; gap: 0.45rem;">
+          <img src="static/images/naveen_profile.jpg" alt="Annareddy Naveen Kumar Reddy" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; object-position: top center; border: 1.5px solid var(--accent-cyan);">
+          <span class="desktop-only" style="font-size: 0.85rem; font-weight: 600;">Profile</span>
+        </a>
+
+        <button class="hamburger-btn" aria-label="Open Navigation Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-drawer">
+      <a href="index.html" class="nav-link "><i class="fas fa-home"></i> Home</a>
+      <a href="interview.html" class="nav-link "><i class="fas fa-microphone"></i> AI Mock Interview</a>
+      <a href="resume.html" class="nav-link "><i class="fas fa-file-invoice"></i> Resume Analyzer</a>
+      <a href="dashboard.html" class="nav-link "><i class="fas fa-chart-line"></i> Career Dashboard</a>
+      <a href="skills.html" class="nav-link active"><i class="fas fa-layer-group"></i> Skill Gap Analyzer</a>
+      <a href="role-matcher.html" class="nav-link "><i class="fas fa-briefcase"></i> Job Role Matcher</a>
+      <a href="projects.html" class="nav-link "><i class="fas fa-code-branch"></i> Projects</a>
+      <a href="certifications.html" class="nav-link "><i class="fas fa-certificate"></i> Certifications</a>
+      <a href="achievements.html" class="nav-link "><i class="fas fa-trophy"></i> Achievements</a>
+      <a href="about.html" class="nav-link "><i class="fas fa-user"></i> About Me</a>
+      <a href="contact.html" class="nav-link "><i class="fas fa-envelope"></i> Contact</a>
+      <a href="profile.html" class="nav-link "><i class="fas fa-id-card"></i> Developer Profile</a>
+    </div>
+  </header>
+
+  <!-- Flash Messages -->
+  
+    
+  
+
+  <!-- Main Content Block -->
+  <main>
+    
+<div class="container" style="padding: 2.5rem 1.5rem 4rem 1.5rem;">
+  
+  <div class="section-header fade-in-up">
+    <span class="badge badge-amber section-tag">Competency Engineering</span>
+    <h1 class="section-title">Skill Gap Analyzer & Roadmap</h1>
+    <p class="section-subtitle">Identify critical skill deficiencies across target career trajectories and follow tailored learning pathways to reach placement mastery.</p>
+  </div>
+
+  <!-- Role Selector Card -->
+  <div class="glass-card fade-in-up" style="padding: 1.75rem 2rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 260px;">
+      <label class="form-label" for="gap-target-role"><i class="fas fa-bullseye" style="color: var(--accent-cyan);"></i> Select Target Career Path:</label>
+      <select class="form-select" id="gap-target-role">
+        
+        <option value="Software Developer">Software Developer</option>
+        
+        <option value="Python Developer">Python Developer</option>
+        
+        <option value="Web Developer">Web Developer</option>
+        
+        <option value="Data Analyst">Data Analyst</option>
+        
+        <option value="AI/ML Beginner">AI/ML Beginner</option>
+        
+        <option value="ECE Engineer">ECE Engineer</option>
+        
+        <option value="Custom Role">Custom Role</option>
+        
+      </select>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 1.25rem;">
+      <div style="text-align: right;">
+        <div style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-secondary); font-weight: 700;">Role Skill Alignment</div>
+        <div id="gap-readiness-val" style="font-size: 2.2rem; font-weight: 800; color: var(--accent-cyan); line-height: 1;">--%</div>
+      </div>
+      <div class="progress-wrapper" style="width: 140px; height: 10px;">
+        <div class="progress-fill" id="gap-readiness-bar" style="width: 0%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skills Breakdown Table -->
+  <div class="glass-card fade-in-up" style="padding: 2rem; margin-bottom: 2.5rem; overflow-x: auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+      <h3 style="font-size: 1.2rem;"><i class="fas fa-tasks" style="color: var(--accent-cyan);"></i> Detailed Skill Competency Analysis</h3>
+      <span class="badge badge-cyan">Dynamic Taxonomy</span>
+    </div>
+
+    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.92rem;">
+      <thead>
+        <tr style="border-bottom: 2px solid var(--border-subtle); color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">
+          <th style="padding: 0.75rem;">Required Core Skill</th>
+          <th style="padding: 0.75rem;">Industry Weight</th>
+          <th style="padding: 0.75rem;">Action Priority</th>
+          <th style="padding: 0.75rem;">Current Status</th>
+          <th style="padding: 0.75rem;">Proficiency</th>
+        </tr>
+      </thead>
+      <tbody id="skill-gap-table-body">
+        <tr>
+          <td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+            <i class="fas fa-spinner fa-spin"></i> Loading skill taxonomy...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Roadmap & Project Recommendations -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;" class="fade-in-up">
+    
+    <div class="glass-card" style="padding: 2rem; border-top: 4px solid var(--accent-cyan);">
+      <h3 style="font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-project-diagram" style="color: var(--accent-cyan);"></i> Recommended Project Milestones</h3>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.25rem;">Build these practical implementations to bridge detected skill gaps:</p>
+      <ul id="gap-recommended-projects" style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.92rem;"></ul>
+    </div>
+
+    <div class="glass-card" style="padding: 2rem; border-top: 4px solid var(--accent-emerald);">
+      <h3 style="font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-book-reader" style="color: var(--accent-emerald);"></i> Core Technical Interview Focus</h3>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.25rem;">Deepen theoretical and architectural mastery on these interview subjects:</p>
+      <ul id="gap-interview-topics" style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.92rem;"></ul>
+    </div>
+
+  </div>
+
+</div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom: 0.75rem;">
+            <div class="brand-icon"><i class="fas fa-brain"></i></div>
+            <span>CareerAI</span>
+          </div>
+          <p>"Built with curiosity, code, and continuous learning."</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">
+            Created by <strong style="color: var(--text-primary);">Annareddy Naveen Kumar Reddy</strong><br>
+            3rd Year B.Tech ECE, Mohan Babu University
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Core Platform</h5>
+          <ul class="footer-links">
+            <li><a href="interview.html">AI Mock Interview</a></li>
+            <li><a href="resume.html">Resume ATS Analyzer</a></li>
+            <li><a href="dashboard.html">Career Dashboard</a></li>
+            <li><a href="skills.html">Skill Gap Analyzer</a></li>
+            <li><a href="role-matcher.html">Job Role Matcher</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Showcase</h5>
+          <ul class="footer-links">
+            <li><a href="projects.html">SmartLabTwinAI</a></li>
+            <li><a href="projects.html">AI Smart Attendance</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="achievements.html">Milestones</a></li>
+            <li><a href="about.html">About Developer</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Connect & Verify</h5>
+          <ul class="footer-links">
+            <li><a href="mailto:naveenkumarreddyannareddy@gmail.com"><i class="fas fa-envelope"></i> naveenkumarreddyannareddy@gmail.com</a></li>
+            <li><a href="tel:7013998257"><i class="fas fa-phone"></i> +91 7013998257</a></li>
+            <li><a href="https://github.com/annareddy-naveen-kumar-reddy" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub Profile</a></li>
+            <li><a href="https://www.linkedin.com/in/annareddy-naveen-kumar-reddy-037343377/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn Profile</a></li>
+            <li><a href="https://annareddy-naveen-kumar-reddy.github.io/portfolio/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Live Portfolio</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 CareerAI — Designed & Engineered by Annareddy Naveen Kumar Reddy | Kadapa District, Kamalapuram Mandal, Thurakapalli Village, Andhra Pradesh, India
+        </div>
+        <div class="footer-social-links">
+          <a href="https://github.com/annareddy-naveen-kumar-reddy" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/annareddy-naveen-kumar-reddy-037343377/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://annareddy-naveen-kumar-reddy.github.io/portfolio/" target="_blank" rel="noopener" aria-label="Portfolio"><i class="fas fa-globe"></i></a>
+          <a href="mailto:naveenkumarreddyannareddy@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="static/js/main.js"></script>
+  
+<script src="static/js/role_matcher.js"></script>
+
+</body>
+</html>

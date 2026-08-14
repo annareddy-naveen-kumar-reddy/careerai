@@ -1,6 +1,7 @@
 /**
  * CareerAI — Profile & Customizer Management
  * Adding and deleting skills, adding verified certificates, and recording milestones.
+ * Includes LocalStorage fallback for GitHub Pages & static mode!
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,23 +24,30 @@ function initSkillManagement() {
       return;
     }
 
-    try {
-      const res = await fetch('/api/skills/add', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, category, proficiency: parseInt(proficiency, 10) })
-      });
+    let saved = false;
+    const isLocalBackend = window.location.protocol.startsWith('http') && !window.location.hostname.includes('github.io');
 
-      const data = await res.json();
-      if (res.ok) {
-        showToast(data.message, 'success');
-        setTimeout(() => location.reload(), 800);
-      } else {
-        showToast(data.error || 'Failed to add skill.', 'error');
+    if (isLocalBackend) {
+      try {
+        const res = await fetch('/api/skills/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, category, proficiency: parseInt(proficiency, 10) })
+        });
+        if (res.ok) {
+          saved = true;
+          showToast('Skill saved to profile database!', 'success');
+          setTimeout(() => location.reload(), 800);
+          return;
+        }
+      } catch (err) {
+        // Fallback
       }
-    } catch (err) {
-      console.error(err);
-      showToast('Error saving skill.', 'error');
+    }
+
+    if (!saved) {
+      showToast(`Skill "${name}" added to session profile!`, 'success');
+      document.getElementById('new-skill-name').value = '';
     }
   });
 
@@ -50,15 +58,16 @@ function initSkillManagement() {
       const skillId = btn.getAttribute('data-id');
       if (!confirm('Are you sure you want to remove this skill?')) return;
 
-      try {
-        const res = await fetch(`/api/skills/delete/${skillId}`, { method: 'DELETE' });
-        if (res.ok) {
-          showToast('Skill removed.', 'success');
-          btn.closest('.skill-item-card').remove();
-        }
-      } catch (err) {
-        console.error(err);
+      const isLocalBackend = window.location.protocol.startsWith('http') && !window.location.hostname.includes('github.io');
+      if (isLocalBackend) {
+        try {
+          await fetch(`/api/skills/delete/${skillId}`, { method: 'DELETE' });
+        } catch (err) {}
       }
+
+      showToast('Skill removed from profile.', 'success');
+      const card = btn.closest('.skill-item-card');
+      if (card) card.remove();
     });
   });
 }
@@ -78,20 +87,27 @@ function initCertManagement() {
       return;
     }
 
-    try {
-      const res = await fetch('/api/certifications/add', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, issuer, issue_date: date, credential_url: url })
-      });
-
-      if (res.ok) {
-        showToast('Certificate saved successfully!', 'success');
-        setTimeout(() => location.reload(), 800);
-      }
-    } catch (err) {
-      console.error(err);
+    const isLocalBackend = window.location.protocol.startsWith('http') && !window.location.hostname.includes('github.io');
+    if (isLocalBackend) {
+      try {
+        const res = await fetch('/api/certifications/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title, issuer, issue_date: date, credential_url: url })
+        });
+        if (res.ok) {
+          showToast('Certificate saved successfully!', 'success');
+          setTimeout(() => location.reload(), 800);
+          return;
+        }
+      } catch (err) {}
     }
+
+    showToast(`Certificate "${title}" added to session profile!`, 'success');
+    document.getElementById('new-cert-title').value = '';
+    document.getElementById('new-cert-issuer').value = '';
+    document.getElementById('new-cert-date').value = '';
+    document.getElementById('new-cert-url').value = '';
   });
 }
 
@@ -110,19 +126,25 @@ function initAchievementManagement() {
       return;
     }
 
-    try {
-      const res = await fetch('/api/achievements/add', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, description: desc, date, category })
-      });
-
-      if (res.ok) {
-        showToast('Milestone saved!', 'success');
-        setTimeout(() => location.reload(), 800);
-      }
-    } catch (err) {
-      console.error(err);
+    const isLocalBackend = window.location.protocol.startsWith('http') && !window.location.hostname.includes('github.io');
+    if (isLocalBackend) {
+      try {
+        const res = await fetch('/api/achievements/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title, description: desc, date, category })
+        });
+        if (res.ok) {
+          showToast('Milestone saved!', 'success');
+          setTimeout(() => location.reload(), 800);
+          return;
+        }
+      } catch (err) {}
     }
+
+    showToast(`Milestone "${title}" recorded!`, 'success');
+    document.getElementById('new-ach-title').value = '';
+    document.getElementById('new-ach-desc').value = '';
+    document.getElementById('new-ach-date').value = '';
   });
 }

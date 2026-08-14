@@ -339,6 +339,13 @@
   <!-- Core JavaScript -->
   <script src="static/js/main.js"></script>
   
+<!-- PDF.js CDN for reliable browser-side PDF text extraction -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+  if (typeof pdfjsLib !== 'undefined') {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+</script>
 <script src="static/js/resume.js"></script>
 
 </body>
